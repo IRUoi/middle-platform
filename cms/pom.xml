@@ -11,5 +11,19 @@
 
     <artifactId>cms</artifactId>
 
+    <dependencies>
+        <!--cms中 只用模块依赖-->
+        <dependency>
+            <artifactId>common</artifactId>
+            <groupId>com.briup</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <artifactId>user</artifactId>
+            <groupId>com.briup</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 
 </project>
