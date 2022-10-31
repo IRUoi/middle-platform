@@ -42,11 +42,6 @@ hs_err_pid*
 .idea/encodings.xml
 .idea/misc.xml
 .idea/vcs.xml
-auth/
-cms/
-code/
-common/
-logging/
+
 middle-platform.iml
-pom.xml
-user/
+
