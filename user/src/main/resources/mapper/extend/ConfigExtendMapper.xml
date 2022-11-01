@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.briup.user.dao.extend.ConfigExtendMapper">
+    <select id="selectList" resultMap="com.briup.user.dao.ConfigMapper.BaseResultMap">
+        select <include refid="com.briup.user.dao.ConfigMapper.Base_Column_List"/>
+        from base_config
+        where config_status = 1
+    </select>
+</mapper>

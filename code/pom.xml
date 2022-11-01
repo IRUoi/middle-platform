@@ -20,7 +20,7 @@
                 <version>${mybatis-generator-maven-plugin.version}</version>
                 <configuration>
                     <!--配置文件的位置-->
-                    <configurationFile>src/main/resources/generatorConfig-system-vanse.xml</configurationFile>
+                    <configurationFile>src/main/resources/generatorConfig-system.xml</configurationFile>
                     <verbose>true</verbose>
                     <!-- 是否覆盖 -->
                     <overwrite>true</overwrite>
@@ -51,5 +51,7 @@
         </plugins>
 
     </build>
+
+
 
 </project>

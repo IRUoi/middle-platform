@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--外部数据源 逆向工程需要连接数据库-->
+    <properties resource="mybaits-generator-db.properties"></properties>
+
+    <!--逆向工程配置-->
+    <context id="MyBatis3" targetRuntime="MyBatis3" defaultModelType="flat">
+        <!-- 防止xml追加 -->
+        <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin"></plugin>
+
+        <!-- 取消所有注释 -->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!--用以上的数据源文件 逆向工程-->
+        <jdbcConnection driverClass="${driverClass}"
+                        connectionURL="${connectionURL}"
+                        userId="${userId}"
+                        password="${password}"/>
+
+        <!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 对应的实体类 -->
+        <javaModelGenerator targetPackage="com.briup.user.bean" targetProject="../user/src/main/java">
+        </javaModelGenerator>
+
+        <!--对应的XXXMapper.xml文件 -->
+        <sqlMapGenerator targetPackage="mapper/basic" targetProject="../user/src/main/resources">
+        </sqlMapGenerator>
+
+        <!-- 对应的XXXMapper.java文件 -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.briup.user.dao" targetProject="../user/src/main/java">
+        </javaClientGenerator>
+
+        <!--表到实体的规则名字 base_config -> BaseConfig 一类规则-->
+        <!-- <table tableName="base_%" enableCountByExample="false" enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false">
+             <domainObjectRenamingRule searchString="^Base" replaceString=""/>
+         </table>-->
+
+        <!--base_config Config->
+         ByExample 模板 可以通过模板调用方法的形式 (不需要写sql)
+            mybatis-plus
+         -->
+        <table tableName="base_config"
+               domainObjectName="Config"
+               enableCountByExample="false"
+               enableDeleteByExample="false"
+               enableSelectByExample="false"
+               enableUpdateByExample="false">
+        </table>
+        <!--映射7此-->
+
+
+        <!-- -->
+        <!--        <table tableName="cms_article" domainObjectName="Article" enableCountByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+        <!--        <table tableName="cms_comment" domainObjectName="Comment" enableCountByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+        <!--        <table tableName="cms_carousel" domainObjectName="Carousel" enableCountByExample="false"-->
+        <!--               enableDeleteByExample="false" enableSelectByExample="false" enableUpdateByExample="false"></table>-->
+    </context>
+</generatorConfiguration>
