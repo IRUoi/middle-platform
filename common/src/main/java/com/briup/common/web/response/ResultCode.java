@@ -28,6 +28,9 @@ public enum ResultCode {
 
     /* 业务错误：30001-39999 */
     SPECIFIED_QUESTIONED_USER_NOT_EXIST(30001, "业务逻辑出现问题"),
+    SPECIFIED_CONFIG_NAME_UNIQUE(30002, "配置名称重复"),
+    SPECIFIED_UPDATE_ERROR(30003, "操作失败，请刷新页面"),
+
 
     /* 系统错误：40001-49999 */
     SYSTEM_INNER_ERROR(40001, "系统内部错误，请稍后重试"),

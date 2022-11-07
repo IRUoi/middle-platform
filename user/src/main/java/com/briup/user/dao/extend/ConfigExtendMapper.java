@@ -11,4 +11,10 @@ import java.util.List;
  */
 public interface ConfigExtendMapper {
     List<Config> selectList();
+
+    Config selectByName(String name);
+
+    int updateConfigWithoutStatus(Config config);
+
+    List<Config> selectAll();
 }
