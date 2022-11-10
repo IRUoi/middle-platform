@@ -1,4 +1,4 @@
-package com.briup.common.web.response;
+package com.briup.common.web.web.response;
 
 import lombok.Data;
 

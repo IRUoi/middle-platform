@@ -1,17 +1,16 @@
 package com.briup.cms.web.controller;
 
 import com.briup.cms.service.IConfigService;
-import com.briup.common.web.exception.CustomerException;
-import com.briup.common.web.response.Result;
-import com.briup.common.web.response.ResultCode;
+import com.briup.common.web.web.exception.CustomerException;
+import com.briup.common.web.web.response.Result;
+import com.briup.common.web.web.response.ResultCode;
 import com.briup.user.bean.Config;
 import com.github.pagehelper.PageInfo;
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -22,6 +21,7 @@ import java.util.List;
  * @Date: 11/1/2022-11-01-11:20 AM
  * @Description：com.briup.cms.web.controller
  */
+@Api(tags = "配置信息模块" )
 @RestController
 @RequestMapping("/config")
 public class ConfigController {

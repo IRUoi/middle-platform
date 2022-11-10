@@ -1,6 +1,6 @@
-package com.briup.common.web.exception;
+package com.briup.common.web.web.exception;
 
-import com.briup.common.web.response.ResultCode;
+import com.briup.common.web.web.response.ResultCode;
 import lombok.Data;
 
 /**

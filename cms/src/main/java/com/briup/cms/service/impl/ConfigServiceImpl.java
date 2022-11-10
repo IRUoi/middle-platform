@@ -1,12 +1,11 @@
 package com.briup.cms.service.impl;
 
 import com.briup.cms.service.IConfigService;
-import com.briup.common.web.exception.CustomerException;
-import com.briup.common.web.response.ResultCode;
+import com.briup.common.web.web.exception.CustomerException;
+import com.briup.common.web.web.response.ResultCode;
 import com.briup.user.bean.Config;
 import com.briup.user.dao.ConfigMapper;
 import com.briup.user.dao.extend.ConfigExtendMapper;
-import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;

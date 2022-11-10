@@ -18,7 +18,6 @@
     <packaging>pom</packaging>
 
 
-    <!--父项目依赖-->
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,6 +37,8 @@
         <commons-io.version>2.6</commons-io.version>
         <swagger-version>2.7.0</swagger-version>
         <lombok-version>1.18.24</lombok-version>
+        <maven-resources-plugin.version>3.1.0</maven-resources-plugin.version>
+        <resource.delimiter>@</resource.delimiter>
     </properties>
 
 
@@ -111,13 +112,47 @@
                 <version>8.0.30</version>
                 <!--                <version>${mysql-connector-java.version}</version>-->
             </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.dependencies.version}</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>
 
+    <profiles>
+        <!-- mvn spring-boot:run -Pdev -->
+        <!-- mvn package -Pdev -DskipTests -->
+        <!-- spring-boot-starter-parent : <resource.delimiter>@</resource.delimiter> -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <spring.profiles.active>dev</spring.profiles.active>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <spring.profiles.active>prod</spring.profiles.active>
+            </properties>
+        </profile>
+    </profiles>
+
     <build>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+
         <plugins>
-            <!--防止二次打包-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -131,7 +166,42 @@
                     </execution>
                 </executions>
             </plugin>
+
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>${maven-resources-plugin.version}</version>
+                <configuration>
+                    <delimiters>
+                        <delimiter>${resource.delimiter}</delimiter>
+                    </delimiters>
+                    <useDefaultDelimiters>false</useDefaultDelimiters>
+                    <resources>
+                        <resource>
+                            <directory>src/main/resources/</directory>
+                            <filtering>true</filtering>
+                            <includes>
+                                <include>**/*.yml</include>
+                                <include>**/*.yaml</include>
+                                <include>**/*.properties</include>
+                            </includes>
+                        </resource>
+                        <resource>
+                            <directory>src/main/resources/</directory>
+                            <filtering>false</filtering>
+                            <excludes>
+                                <exclude>**/*.yml</exclude>
+                                <exclude>**/*.yaml</exclude>
+                                <exclude>**/*.properties</exclude>
+                            </excludes>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+
         </plugins>
+
     </build>
 
 </project>

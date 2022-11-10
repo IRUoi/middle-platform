@@ -1,14 +1,11 @@
-package com.briup.common.web.exception;
+package com.briup.common.web.web.exception;
 
-import com.briup.common.web.response.Result;
-import com.briup.common.web.response.ResultCode;
+import com.briup.common.web.web.response.Result;
+import com.briup.common.web.web.response.ResultCode;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
-import java.sql.SQLIntegrityConstraintViolationException;
 
 
 /**
@@ -46,8 +43,6 @@ public class GlobalExceptionHandler {
             if (bindingResult.hasFieldErrors()) {
                 // @NotNull(message = "配置名称不能为空")
                 String errorMessage = bindingResult.getFieldErrors().get(0).getDefaultMessage();
-
-                System.out.println("errorMessage = " + errorMessage);
                 return Result.failure(errorMessage);
             }
         }
