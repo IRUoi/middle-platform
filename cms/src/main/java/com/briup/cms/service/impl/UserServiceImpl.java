@@ -2,6 +2,7 @@ package com.briup.cms.service.impl;
 
 import com.briup.cms.dto.UserDto;
 import com.briup.cms.service.IUserService;
+import com.briup.common.web.util.PageUtil;
 import com.briup.common.web.web.exception.CustomerException;
 import com.briup.common.web.web.response.ResultCode;
 import com.briup.common.web.util.JwtUtil;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -45,5 +47,10 @@ public class UserServiceImpl implements IUserService {
         String token = JwtUtil.sign(String.valueOf(userFormDB.getUserId()), info);
         //3、通过工具类产生token并返回
         return token;
+    }
+
+    @Override
+    public List<User> findByPage(PageUtil pageUtil) {
+        return null;
     }
 }
