@@ -5,11 +5,11 @@ import com.briup.common.web.util.PageUtil;
 import com.briup.common.web.web.response.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Auther: ZHU(lc))
@@ -28,5 +28,13 @@ public class UserController {
     public Result findByPage(@RequestBody PageUtil pageUtil){
         PageUtil data = userService.findByPage(pageUtil);
         return Result.success(data);
+    }
+
+
+    @ApiOperation(value = "批量删除")
+    @DeleteMapping("/deleteBatch")
+    public Result deleteBatch(@ApiParam("批量删除id") @RequestBody List<Integer> ids){
+        userService.deleteBatch(ids);
+        return Result.success("批量删除成功");
     }
 }

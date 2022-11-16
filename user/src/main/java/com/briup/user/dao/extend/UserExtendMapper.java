@@ -4,6 +4,7 @@ import com.briup.common.web.util.PageUtil;
 import com.briup.user.bean.User;
 import com.github.pagehelper.Page;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,4 +16,6 @@ public interface UserExtendMapper {
     User findByName(String username);
 
     Page<User> findByPage(Map params);
+
+    void deleteBatch(List<Integer> ids);
 }

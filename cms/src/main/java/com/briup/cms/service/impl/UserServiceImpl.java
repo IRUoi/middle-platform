@@ -14,9 +14,11 @@ import com.github.pagehelper.PageHelper;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -71,6 +73,17 @@ public class UserServiceImpl implements IUserService {
         String userId = JwtUtil.getUserId(token);
         User user = findById(Integer.parseInt(userId));
         return user;
+    }
+
+    @Override
+    public void deleteById(Integer id) {
+        userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Transactional
+    @Override
+    public void deleteBatch(List<Integer> ids) {
+        userExtendMapper.deleteBatch(ids);
     }
 
     //根据

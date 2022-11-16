@@ -27,6 +27,6 @@ public interface IUserService {
 
     void deleteById(Integer id);
 
-
+    void deleteBatch(List<Integer> ids);
 }
 
