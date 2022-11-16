@@ -15,6 +15,18 @@ public interface IUserService {
     //登录成功，返回token
     public String login(UserDto userDto);
     //分页条件查询（角色和名字）
-    List<User> findByPage(PageUtil pageUtil);
+    PageUtil findByPage(PageUtil pageUtil);
+    //获取登录用户信息
+    User findById(Integer id);
+
+    User currentInfo(String token);
+
+
+    //更新用户
+    //id删除
+
+    void deleteById(Integer id);
+
+
 }
 

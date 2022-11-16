@@ -3,12 +3,11 @@ package com.briup.cms.web.controller;
 import com.briup.cms.dto.UserDto;
 import com.briup.cms.service.IUserService;
 import com.briup.common.web.web.response.Result;
+import com.briup.user.bean.User;
 import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 /**
  * @Auther: ZHU(lc))
@@ -30,5 +29,12 @@ public class AuthControlller {
     public Result Login(@RequestBody @ApiParam("认证类") UserDto userDto){
         String token = userService.login(userDto);
         return Result.success(token);
+    }
+
+    @ApiOperation(value = "获取当前用户信息", notes = "首页显示")
+    @GetMapping("/currentInfo")
+    public Result info(@ApiIgnore @RequestHeader("Authorization") String token){
+        User user = userService.currentInfo(token);
+        return Result.success(user);
     }
 }

@@ -9,12 +9,14 @@ import com.briup.common.web.util.JwtUtil;
 import com.briup.user.bean.User;
 import com.briup.user.dao.UserMapper;
 import com.briup.user.dao.extend.UserExtendMapper;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -49,8 +51,27 @@ public class UserServiceImpl implements IUserService {
         return token;
     }
 
+    //根据信息分页查询
     @Override
-    public List<User> findByPage(PageUtil pageUtil) {
-        return null;
+    public PageUtil findByPage(PageUtil pageUtil) {
+        PageHelper.startPage(pageUtil.getPageNumber(),pageUtil.getPageSize());
+        Page page = userExtendMapper.findByPage(pageUtil.getParams());
+        pageUtil.setTotal(page.getTotal());
+        pageUtil.setList(page.getResult());
+        return pageUtil;
     }
+
+    @Override
+    public User findById(Integer id) {
+        return userMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public User currentInfo(String token) {
+        String userId = JwtUtil.getUserId(token);
+        User user = findById(Integer.parseInt(userId));
+        return user;
+    }
+
+    //根据
 }

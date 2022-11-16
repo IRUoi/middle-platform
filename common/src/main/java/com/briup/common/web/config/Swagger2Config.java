@@ -54,11 +54,12 @@ public class Swagger2Config {
     // swagger 集成 token
     private List<SecurityContext> securityContexts() {
         // 例如，/auth/** 和jwt保持一致
-        List<String> antPaths = new ArrayList<>(Arrays.asList("/config/**"));
+        List<String> antPaths = new ArrayList<>(Arrays.asList("/config/**","/user/**","/auth/**"));
 
         return Collections.singletonList(
                 SecurityContext.builder()
                         .securityReferences(defaultAuth())
+
                         .forPaths(antPathsCondition(antPaths))
                         .build()
         );

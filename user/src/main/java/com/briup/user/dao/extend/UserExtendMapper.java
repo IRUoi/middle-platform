@@ -1,6 +1,10 @@
 package com.briup.user.dao.extend;
 
+import com.briup.common.web.util.PageUtil;
 import com.briup.user.bean.User;
+import com.github.pagehelper.Page;
+
+import java.util.Map;
 
 /**
  * @Auther: ZHU(lc))
@@ -8,5 +12,7 @@ import com.briup.user.bean.User;
  * @Description：com.briup.user.dao.extend
  */
 public interface UserExtendMapper {
-    public User findByName(String username);
+    User findByName(String username);
+
+    Page<User> findByPage(Map params);
 }

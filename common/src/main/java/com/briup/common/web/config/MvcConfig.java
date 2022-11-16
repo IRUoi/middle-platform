@@ -18,6 +18,8 @@ public class MvcConfig extends WebMvcAutoConfiguration implements WebMvcConfigur
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new JwtInterceptor())
-                .addPathPatterns("/config/**");
+                .excludePathPatterns("/auth/login")
+                .addPathPatterns("/config/**","/user/**","/auth/**");
+
     }
 }
