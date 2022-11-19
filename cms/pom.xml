@@ -23,6 +23,11 @@
             <groupId>com.briup</groupId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <artifactId>logging</artifactId>
+            <groupId>com.briup</groupId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 

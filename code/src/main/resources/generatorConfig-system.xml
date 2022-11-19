@@ -50,8 +50,8 @@
          ByExample 模板 可以通过模板调用方法的形式 (不需要写sql)
             mybatis-plus
          -->
-        <table tableName="base_user"
-               domainObjectName="User"
+        <table tableName="base_log"
+               domainObjectName="Log"
                enableCountByExample="false"
                enableDeleteByExample="false"
                enableSelectByExample="false"

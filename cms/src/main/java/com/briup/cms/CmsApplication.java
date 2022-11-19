@@ -17,7 +17,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @Description：com.briup.cms
  */
 
-@SpringBootApplication(scanBasePackages = {"com.briup.common", "com.briup.cms"})
+@SpringBootApplication(scanBasePackages = {"com.briup.common", "com.briup.cms", "com.briup.logging"})
 @MapperScan(CmsApplication.MAPPERBASEPACKAGE)
 //@EnableScheduling
 public class CmsApplication {

@@ -4,6 +4,7 @@ import com.briup.cms.service.IConfigService;
 import com.briup.common.web.web.exception.CustomerException;
 import com.briup.common.web.web.response.Result;
 import com.briup.common.web.web.response.ResultCode;
+import com.briup.logging.anno.LoggingAccess;
 import com.briup.user.bean.Config;
 import com.github.pagehelper.PageInfo;
 import io.swagger.annotations.Api;
@@ -28,6 +29,7 @@ public class ConfigController {
     @Autowired
     private IConfigService configService;
 
+    @LoggingAccess
     @ApiOperation(value = "查询已启动的配置")
     @GetMapping("/listConfig")
     public Result selectConfigStatusWithOn(){
