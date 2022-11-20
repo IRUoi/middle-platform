@@ -76,6 +76,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public void updateUserInfo(User user) {
+        //更新当前用户信息
+
+    }
+
+    @Override
     public void deleteById(Integer id) {
         userMapper.deleteByPrimaryKey(id);
     }

@@ -21,8 +21,9 @@ public interface IUserService {
 
     User currentInfo(String token);
 
-
     //更新用户
+
+    void updateUserInfo(User user);
     //id删除
 
     void deleteById(Integer id);
